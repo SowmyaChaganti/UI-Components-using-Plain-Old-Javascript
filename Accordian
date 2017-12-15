@@ -1,0 +1,46 @@
+<html>
+<head>
+<script>
+var accTitle = document.getElementsById("title1");
+function accordian(senderId){
+  var nextEle = document.getElementById(senderId).nextSibling.id;
+ //make the content visible
+ var x = document.getElementById(nextEle);
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }  
+}
+</script>
+<style>
+.tiles{
+  border: 1px solid black;
+  width: auto;
+  height: auto;
+}
+
+#accData1{
+  display: none;
+}
+</style>
+</head>
+<title>Accordian</title>
+<body>
+<div class="container">
+  <div class="tiles">
+    <a id="title1" onclick="accordian(this.id)">Accordian 1</a><p id="accData1">This is expanded Accordian 1</p>
+  </div>
+  
+  <div class="tiles">
+    <a id="title2" onclick="accordian(this.id)">Accordian 2</a><p id="accData2">This is expanded Accordian 2</p>
+  </div>
+  
+  <div class="tiles">
+    <a id="title3" onclick="accordian(this.id)">Accordian 3</a><p id="accData3">This is expanded Accordian 3</p>
+  </div>
+  
+</div>
+
+</body>
+</html>
