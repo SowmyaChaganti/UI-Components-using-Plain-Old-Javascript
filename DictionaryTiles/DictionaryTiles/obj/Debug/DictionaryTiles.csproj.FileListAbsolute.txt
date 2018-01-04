@@ -1,0 +1,6 @@
+c:\users\chaga\onedrive\documents\visual studio 2013\Vidly\DictionaryTiles\DictionaryTiles\bin\Debug\DictionaryTiles.exe.config
+c:\users\chaga\onedrive\documents\visual studio 2013\Vidly\DictionaryTiles\DictionaryTiles\bin\Debug\DictionaryTiles.exe
+c:\users\chaga\onedrive\documents\visual studio 2013\Vidly\DictionaryTiles\DictionaryTiles\bin\Debug\DictionaryTiles.pdb
+c:\users\chaga\onedrive\documents\visual studio 2013\Vidly\DictionaryTiles\DictionaryTiles\obj\Debug\DictionaryTiles.csprojResolveAssemblyReference.cache
+c:\users\chaga\onedrive\documents\visual studio 2013\Vidly\DictionaryTiles\DictionaryTiles\obj\Debug\DictionaryTiles.exe
+c:\users\chaga\onedrive\documents\visual studio 2013\Vidly\DictionaryTiles\DictionaryTiles\obj\Debug\DictionaryTiles.pdb
