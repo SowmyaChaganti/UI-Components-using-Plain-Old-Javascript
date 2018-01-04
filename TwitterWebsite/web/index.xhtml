@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Twitter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Twitter</a>
+              </div>
+                <div class="pull-right">
+                  <h:form class="form-inline">
+                      <div class="form-group">
+                        Username: 
+                            <h:inputText id="username" class="form-control" required="true"
+                            requiredMessage="Username Required!!"
+                            title="Please enter your username or email" value="#{login.username}">
+                            </h:inputText>
+                            Password: 
+                            <h:inputText id="psw" class="form-control" required="true"
+                                requiredMessage="Password Required!!"
+                                title="Please enter your Password" value="#{login.psw}">
+                            </h:inputText>
+                            <h:commandButton id="Submit" class="btn btn-primary" value="Login"
+                            action="#{login.login()}">
+                            </h:commandButton>
+                            <br/>
+                            <h:link outcome="forgotPassword.xhtml">Forgot Password?</h:link>
+                    </div>
+                  </h:form>
+              </div>
+  </div>
+</nav>
+     
+        
+        <div class="container">
+            <div class="signup pull-right" style=" min-width: 30em; max-width: 70em;">
+            <p>Do not have an account?</p>
+            <fieldset>
+                <legend>Sign-Up</legend>
+            
+        
+        <h:form>
+            <div class="form-group">
+             <p>First Name: 
+                        <h:inputText id="firstname" class="form-control" required ="true" 
+                             requiredMessage="FirstName Required!! Can't left empty"
+                        title="Please enter your FirstName"
+                        value="#{twitter_Signup.fisrtname}"></h:inputText>
+                        <br></br>
+             </p>
+            
+             <p> Last Name: 
+                        <h:inputText id="lastname" class="form-control" required ="true" 
+                             requiredMessage="LastName Required!! Can't left empty"
+                        title="Please enter your LastName"
+                        value="#{twitter_Signup.lastname}"></h:inputText>
+                        <br></br>
+             </p>
+             <p> Email: &nbsp; &nbsp; &nbsp;
+                        <h:inputText id="email" class="form-control" required ="true" 
+                             requiredMessage="Email Required!! Can't left empty"
+                        title="Please enter your Email"
+                        value="#{twitter_Signup.email}"></h:inputText>
+                        <br></br>
+             </p>
+             <p> Password: &nbsp; &nbsp;
+                        <h:inputText id="password" class="form-control" required ="true" 
+                             requiredMessage="Password Required!! Can't left empty"
+                        title="Please enter your password"
+                        value="#{twitter_Signup.password}"></h:inputText>
+                        <br></br>
+            </p>
+            <p> Please pick one security question:</p>
+            <p>
+                <h:selectOneMenu class="form-control" value="#{twitter_Signup.securityQuestion}">
+                <f:selectItem itemValue="Which city do you live in?" itemLabel="Which city do you live in?" />
+   			<f:selectItem itemValue="What is your fathers name?" itemLabel="What is your fathers name?" />
+   			<f:selectItem itemValue="What is birth month?" itemLabel="What is birth month?" />
+                        <f:selectItem itemValue="What is your pets name?" itemLabel="What is your pets name?" />
+                        <f:selectItem itemValue="What is your favorite city?" itemLabel="What is your favorite city?" />
+              </h:selectOneMenu><br></br>
+            </p>
+            <p>Answer: &nbsp; &nbsp;
+                 <h:inputText id="Answer" class="form-control" required ="true" 
+                             requiredMessage="Answer Required!! Can't left empty"
+                        title="Please enter your Answer"
+                        value="#{twitter_Signup.answer}"></h:inputText>
+                        <br></br>
+                
+            </p>
+             <p> Country: &nbsp; &nbsp;
+                        <h:inputText id="country" class="form-control" required ="true" 
+                             requiredMessage="LastName Required!! Can't left empty"
+                        title="Please enter your LastName"
+                        value="#{twitter_Signup.country}"></h:inputText>
+                        <br></br>
+            </p>
+             <p>
+                 <h:commandButton id="submit" class="btn btn-primary" value="Submit"
+                                              action="#{twitter_Signup.signup()}" />
+             </p>
+            </div>
+        </h:form>
+            
+        </fieldset>
+            </div>
+        </div>
+    </h:body>
+</html>
+

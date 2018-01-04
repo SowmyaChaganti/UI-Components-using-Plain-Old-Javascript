@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Search</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p>#{login.currentUser.firstname} your #{searchclass.search(login.currentUser.twitterID)} is</p>
+            <br></br>
+            <h:dataTable value="#{searchclass.searchitem}" var="dis">
+                <h:column>
+                    <h:link  outcome="searchedprofile.xhtml">
+                        Go to profile
+                        <f:param name="id" value="#{dis.twitter_id}"/>
+                        &nbsp;
+                    </h:link>
+                </h:column>
+               
+             <h:column>
+                    <f:facet name="header">First name</f:facet>
+                    #{dis.firstname}
+                    <f:param name="f_name" value="#{dis.firstname}"/>
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">Last name</f:facet>
+                    #{dis.lastname}
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

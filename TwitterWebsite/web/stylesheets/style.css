@@ -1,0 +1,9 @@
+.signup{
+    padding: 0 20% 0 0;
+}
+img {
+    position: absolute;
+    left: 1em;
+    top: 6em;
+    z-index: 1;
+}

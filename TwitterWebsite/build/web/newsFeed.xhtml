@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <head>
+        <title>News Feed</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        <script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css"/>
+    </head>
+    <body>
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modal End -->
+  
+        <h:form>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Twitter</a>
+              </div>
+                <div class="pull-right">
+                    <h:inputText id="searchuser" class="form-control" value="#{searchclass.serachkey}"></h:inputText>
+                    <h:commandButton id="search" value="Search " action="Searchresult.xhtml">
+                        
+                    </h:commandButton>
+                </div>
+  </div>
+</nav>
+            </div>
+            <div class="row">
+                <div id="div1" style="height: 10em; background-color: #269abc;"></div>
+                <div id="div2" style="height: 3em; background-color: #CCC;">
+                        <table class="pull-right">
+                            <tr>
+                                <td>Tweets</td>
+                                <td>Following</td>
+                                <td>Followers</td>
+                                <td>Likes</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>5</td>
+                                <td>34</td>
+                                <td>9</td>
+                            </tr>
+                        </table>
+                    
+                </div>
+                <img src="images/profile-picture.png" class="profilePicture" alt="Profile Picture"/>
+            </div>
+  <div class="row">
+      <div class="col-md-4" style="padding: 6% 0 0 3%;">
+          <p>#{login.currentUser.firstname} #{login.currentUser.lastname}</p>
+          <br></br>
+          <h:link outcome="createUserProfile.xhtml" >
+                    Profile Settings</h:link>
+        </div>
+      
+      <div class="col-md-5">
+          <section>
+             <h:inputTextarea id="whatHappening" value="#{post.postcontent}">
+            </h:inputTextarea>
+            <br/>
+            <h:commandButton id="post" value="Post" action="#{post.post(login.currentUser.twitterID)}">
+                <f:ajax execute="@this" render="@this" onevent="cleartext()"></f:ajax>
+            </h:commandButton>
+        </section>
+        <br/>
+        <section>
+            <h3></h3>
+        </section>
+        <br/>
+        <section>
+            <div>
+                <c:forEach var="thispost" items="#{util.userPosts(login.currentUser.twitterID)}">
+                    <p>#{thispost.firstname} #{thispost.lastname}</p>
+                    <p>@#{thispost.user_id}</p>
+                    <p>#{thispost.post}</p>
+                    <p>#{thispost.likeCount} likes</p>
+                    <p>
+                        <h:commandButton type="submit" class="retweet" value="Retweet"
+                                         action="#{util.retweet(thispost.postID)}" id="retweet#{thispost.postID}" />
+                        <p>
+                            <h:inputText class="commentBox" id="userComment" value="#{search.comment}"/>
+                            <h:commandButton type="submit" class="comment" value="Comment"
+                                action="#{search.postComment(login.currentUser.twitterID)}" />
+                        </p>
+                        <h:commandButton type="submit" class="like" value="Like"
+                            action="#{util.likeCount(thispost.postID)}" id="like#{thispost.postID}" />
+                    </p>
+                    <p>
+                        <span>Comments</span>
+                        
+                        <c:forEach var="comm" items="#{util.displayComments(login.currentUser.twitterID, thispost.postID)}">
+                            <div>#{comm.comment}</div>
+                            <div>#{comm.comment_likes} likes</div>
+                        </c:forEach>
+                       
+                    </p>
+                    <hr/>
+                </c:forEach>
+               
+            </div>
+        </section>
+      </div>
+      <div class="col-md-3">
+          who to follow..
+           <c:forEach var="whotofollow"  items="#{util.whoToFollow(login.currentUser.twitterID)}">
+              <p>#{whotofollow.firstname}  #{whotofollow.lastname}</p>
+              <p><h:commandButton value="Follow" action="Searchresult.xhtml"></h:commandButton></p>
+          </c:forEach>
+      </div>
+       </div>
+</div>
+        </h:form>
+ <!-- <script type="text/javascript">
+      function cleartext()
+      {
+          document.getElementById("whatHappening").value = "";
+      }
+  </script> -->
+      
+    </body>
+</html>

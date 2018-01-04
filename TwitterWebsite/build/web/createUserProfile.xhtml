@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>userprofile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+    </head>
+    <body>
+        <div>Welcome to twitter</div>
+        <p>From user object: #{login.currentUser.firstname}</p>
+        <h:form>
+            <p>
+                Customize your profile
+            </p>
+            <br></br>
+            <p>
+                Username: 
+                <h:inputText id="username" value="#{userprofile.username}"></h:inputText>
+                <br> </br>    
+            </p>
+            <p>
+                Birth date: 
+                <h:inputText id="bitrhdate" value="#{userprofile.birthdate}"></h:inputText>
+                 <br> </br>  
+            </p>
+            <p>
+                School: 
+                <h:inputText id="school" value="#{userprofile.school}"></h:inputText>
+                 <br> </br>  
+            </p>
+            <p>
+               Interest: 
+               <h:selectManyCheckbox value="#{userprofile.interest}">
+                         <f:selectItem itemValue="sport" itemLabel="sport" />
+                         <f:selectItem itemValue="technology" itemLabel="technology" />
+                         <f:selectItem itemValue="politics" itemLabel="politics" />
+                  </h:selectManyCheckbox>
+                 <br> </br>  
+            </p>
+            <p>
+                <h:commandButton id="savechange" value="save change" action="#{userprofile.setprofile(login.username)}"></h:commandButton>
+                <p>
+                 Deactivate account:
+                 <h:commandButton id="deactive" value="dective" action="#{userprofile.blockaccount(login.username)}"/>
+                 </p> 
+                <h:commandButton id="back1" value="NewsFeed" action="newsFeed.xhtml"/>  
+            </p>
+        </h:form>
+    </body>
+</html>
